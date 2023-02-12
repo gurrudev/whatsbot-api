@@ -24,7 +24,7 @@ const request = require("request"),
 app.listen(process.env.PORT || 1337, () => console.log("webhook is listening"));
 
 // Accepts POST requests at /webhook endpoint
-app.post("/webhook", async (req, res) => {
+app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
   let body = req.body;
 
@@ -56,6 +56,8 @@ app.post("/webhook", async (req, res) => {
       }else{
         msg_body = "Sorry, I didn't get what you have said"  
       }
+      
+      async function one(){
       await axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
@@ -70,7 +72,8 @@ app.post("/webhook", async (req, res) => {
         },
         headers: { "Content-Type": "application/json" },
       });
-      
+      }
+      async function two(){
       await axios1({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
@@ -91,6 +94,10 @@ app.post("/webhook", async (req, res) => {
         },
         headers: { "Content-Type": "application/json" },
       });
+      }
+      
+      one()
+      two()
     }
     res.sendStatus(200);
   } else {
