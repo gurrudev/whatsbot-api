@@ -41,7 +41,7 @@ app.post("/webhook", (req, res) => {
       
   
       if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
-        msg_body = "Hi there! I am your virtual asistant from Gainn Fintach. \n\nI can do following...\n1)Balance - To know your account balance\n3)Portfolio - To know your holdings/n3)Orders - To know about your orders/n4)Contact - Contact with our customer care"
+        msg_body = "Hi there! I am your virtual asistant from Gainn Fintach. \n\nI can do following...\n\n1)Balance - To know your account balance\n2)Portfolio - To know your holdings\n3)Orders - To know about your orders\n4)Contact - Contact with our customer care"
       }else if (msg_body == "Balance" || msg_body == "balance"){
         msg_body = "Dear, {i} your account balance is {i}"
       }else if (msg_body == "Portfolio" || msg_body == "portfolio"){
@@ -51,7 +51,7 @@ app.post("/webhook", (req, res) => {
       }else if (msg_body == "Contact" || msg_body == "contact"){
         msg_body = "Contact with our customer care{i}"
       }else{
-        msg_body = "Sorry, I didn't get what you have said. Please type correct keyword\n\n1)Balance - To know your account balance\n3)Portfolio - To know your holdings/n3)Orders - To know about your orders/n4)Contact - Contact with our customer care"
+        msg_body = "Sorry, I didn't get what you have said. Please type correct keyword\n\n1)Balance - To know your account balance\n3)Portfolio - To know your holdings\n3)Orders - To know about your orders\n4)Contact - Contact with our customer care"
       }
       
       axios({
