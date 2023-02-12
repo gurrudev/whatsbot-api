@@ -41,7 +41,7 @@ app.post("/webhook", (req, res) => {
       
   
       if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
-        msg_body = "Hi there! I am your virtual asistant from Gainn Fintach. \n\nI can do following please type correct keyword.\n\nBalance - To know your account balance\nPortfolio - To know your holdings\nOrders - To know about your orders\nContact - Contact with our customer care\nHelp - To get additional help"
+        msg_body = "*Hi there! I am your virtual asistant from Gainn Fintach* \n\nI can do following please type correct keyword.\n\nBalance - To know your account balance\nPortfolio - To know your holdings\nOrders - To know about your orders\nContact - Contact with our customer care\nHelp - To get additional help"
       }else if (msg_body == "Balance" || msg_body == "balance"){
         msg_body = "Dear, {i} your account balance is {i}"
       }else if (msg_body == "Portfolio" || msg_body == "portfolio"){
