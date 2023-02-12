@@ -14,7 +14,7 @@ const request = require("request"),
   app = express().use(body_parser.json()); // creates express http server
 
 // Sets server port and logs message on success
-app.listen(process.env.PORT || 1337, () => console.log("webhook is listening"));
+app.listen(process.env.PORT || 1337, () => console.log("webhook is listening 🚀"));
 
 
 // Accepts POST requests at /webhook endpoint
@@ -40,11 +40,11 @@ app.post("/webhook", (req, res) => {
       let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
       
   
-      if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
+      if (msg_body == "👋"|| msg_body == "✋"|| msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
         msg_body = "*Hi there! I am your virtual asistant from Gainn Fintach* \n\nI can do following please type correct keyword.\n\n*Balance* - To know your account balance\n*Portfolio* - To know your holdings\n*Orders* - To know about your orders\n*Contact* - Contact with our customer care\n*Help* - To get additional help"
       }else if (msg_body == "Balance" || msg_body == "balance"){
         msg_body = "Dear, {i} your account balance is {i}"
-      }else if (msg_body == "Portfolio" || msg_body == "portfolio"){
+      }else if (msg_body == "Portfolio" || msg_body == "portfolio" ){
         msg_body = "This is For portfolio\n\n{i}\n{i}\n{i}\n{i}"
       }else if (msg_body == "Orders" || msg_body == "orders"){
         msg_body = "This is For orders\n\n{i}\n{i}\n{i}\n{i}"
