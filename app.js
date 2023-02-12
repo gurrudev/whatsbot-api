@@ -45,16 +45,16 @@ app.post("/webhook", (req, res) => {
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
       let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
       
-      var msg = "";
+      //var msg = "";
       var type = "";
       
       
       if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
-        msg = "Hello, how may i help you..."
+        msg_body = "Hello, how may i help you..."
       }if(msg_body == "Hello World" || msg_body == "hello world"){
         type = "hello_world"
       }else{
-        msg = "Sorry, I didn't get what you have said"  
+        msg_body = "Sorry, I didn't get what you have said"  
       }
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -66,7 +66,7 @@ app.post("/webhook", (req, res) => {
         data: {
           messaging_product: "whatsapp",
           to: from,
-          text: { body: msg },
+          text: { body: msg_body },
         },
         headers: { "Content-Type": "application/json" },
       });
@@ -88,7 +88,8 @@ app.post("/webhook", (req, res) => {
               code: "en_US"
             }
           }
-        }
+        },
+        headers: { "Content-Type": "application/json" },
       });
     }
     res.sendStatus(200);
