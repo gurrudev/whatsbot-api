@@ -17,22 +17,6 @@ const request = require("request"),
 app.listen(process.env.PORT || 1337, () => console.log("webhook is listening"));
 
 
-function client_queires(){
-      let msg_body = "";
-      let type = "";
-  
-      if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
-        msg_body = "Hello, how may i help you..."
-      }else if (msg_body == "Hello World" || msg_body == "hello world"){
-        type = "hello_world"
-      }else{
-        msg_body = "Sorry, I didn't get what you have said"  
-      }
-      
-}
-
-
-
 // Accepts POST requests at /webhook endpoint
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
@@ -55,7 +39,20 @@ app.post("/webhook", (req, res) => {
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
       let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
       
-      client_queires()
+  
+      if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
+        msg_body = "Hi there! I am your virtual asistant from Gainn Fintach. \n\nI can do following...\n1)Balance - To know your account balance\n3)Portfolio - To know your holdings/n3)Orders - To know about your orders/n4)Contact - Contact with our customer care"
+      }else if (msg_body == "Balance" || msg_body == "balance"){
+        msg_body = "Dear, {i} your account balance is {i}"
+      }else if (msg_body == "Portfolio" || msg_body == "portfolio"){
+        msg_body = "This is For portfolio\n\n{i}\n{i}\n{i}\n{i}"
+      }else if (msg_body == "Orders" || msg_body == "orders"){
+        msg_body = "This is For orders\n\n{i}\n{i}\n{i}\n{i}"
+      }else if (msg_body == "Contact" || msg_body == "contact"){
+        msg_body = "Contact with our customer care{i}"
+      }else{
+        msg_body = "Sorry, I didn't get what you have said. Please type correct keyword\n\n1)Balance - To know your account balance\n3)Portfolio - To know your holdings/n3)Orders - To know about your orders/n4)Contact - Contact with our customer care"
+      }
       
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -73,26 +70,26 @@ app.post("/webhook", (req, res) => {
       });
       
     
-      axios1({
-        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-        url:
-          "https://graph.facebook.com/v12.0/" +
-          phone_number_id +
-          "/messages?access_token=" +
-          token,
-        data: {
-          messaging_product: "whatsapp",
-          to: from,
-          type: "template",
-          template:{
-            name: type,
-            language: {
-              code: "en_US"
-            }
-          }
-        },
-        headers: { "Content-Type": "application/json" },
-      });
+//       axios1({
+//         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+//         url:
+//           "https://graph.facebook.com/v12.0/" +
+//           phone_number_id +
+//           "/messages?access_token=" +
+//           token,
+//         data: {
+//           messaging_product: "whatsapp",
+//           to: from,
+//           type: "template",
+//           template:{
+//             name: type,
+//             language: {
+//               code: "en_US"
+//             }
+//           }
+//         },
+//         headers: { "Content-Type": "application/json" },
+//       });
      
     }
     res.sendStatus(200);
