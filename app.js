@@ -41,7 +41,7 @@ app.post("/webhook", (req, res) => {
       
   
       if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
-        msg_body = "Hi there! I am your virtual asistant from Gainn Fintach. \n\nI can do following...\n\n1)Balance - To know your account balance\n2)Portfolio - To know your holdings\n3)Orders - To know about your orders\n4)Contact - Contact with our customer care"
+        msg_body = "Hi there! I am your virtual asistant from Gainn Fintach. \n\nI can do following please type correct keyword.\n\nBalance - To know your account balance\nPortfolio - To know your holdings\nOrders - To know about your orders\nContact - Contact with our customer care\nHelp - To get additional help"
       }else if (msg_body == "Balance" || msg_body == "balance"){
         msg_body = "Dear, {i} your account balance is {i}"
       }else if (msg_body == "Portfolio" || msg_body == "portfolio"){
@@ -50,8 +50,12 @@ app.post("/webhook", (req, res) => {
         msg_body = "This is For orders\n\n{i}\n{i}\n{i}\n{i}"
       }else if (msg_body == "Contact" || msg_body == "contact"){
         msg_body = "Contact with our customer care{i}"
+      }else if (msg_body == "help" || msg_body == "Help"){
+        msg_body = "For more information visit our website: https://nwww.example.com"
+      }else if (msg_body == "Thank You" || msg_body == "Thank you" || msg_body == "thank you" || msg_body == "thank You"){
+        msg_body = "You are most welcome!, please let me know if you want any help"
       }else{
-        msg_body = "Sorry, I didn't get what you have said. Please type correct keyword\n\n1)Balance - To know your account balance\n3)Portfolio - To know your holdings\n3)Orders - To know about your orders\n4)Contact - Contact with our customer care"
+        msg_body = "Sorry, I didn't get what you have said. Please type correct keyword\n\nBalance - To know your account balance\nPortfolio - To know your holdings\nOrders - To know about your orders\nContact - Contact with our customer care\nHelp - To get additional help"
       }
       
       axios({
