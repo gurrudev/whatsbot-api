@@ -1,15 +1,8 @@
-/*
- * Starter Project for WhatsApp Echo Bot Tutorial
- *
- * Remix this as the starting point for following the WhatsApp Echo Bot tutorial
- *
- */
+
 
 "use strict";
 
-// Access token for your app
-// (copy token from DevX getting started page
-// and save it as environment variable into the .env file)
+
 const token = process.env.WHATSAPP_TOKEN;
 
 // Imports dependencies and set up http server
@@ -22,6 +15,23 @@ const request = require("request"),
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log("webhook is listening"));
+
+
+function client_queires(){
+      let msg_body = "";
+      let type = "";
+  
+      if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
+        msg_body = "Hello, how may i help you..."
+      }else if (msg_body == "Hello World" || msg_body == "hello world"){
+        type = "hello_world"
+      }else{
+        msg_body = "Sorry, I didn't get what you have said"  
+      }
+      
+}
+
+
 
 // Accepts POST requests at /webhook endpoint
 app.post("/webhook", (req, res) => {
@@ -45,20 +55,9 @@ app.post("/webhook", (req, res) => {
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
       let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
       
-      //var msg = "";
-      var type = "";
+      client_queires()
       
-      
-      if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
-        msg_body = "Hello, how may i help you..."
-      }else if (msg_body == "Hello World" || msg_body == "hello world"){
-        type = "hello_world"
-      }else{
-        msg_body = "Sorry, I didn't get what you have said"  
-      }
-      
-      async function one(){
-      await axios({
+      axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
           "https://graph.facebook.com/v12.0/" +
@@ -72,9 +71,9 @@ app.post("/webhook", (req, res) => {
         },
         headers: { "Content-Type": "application/json" },
       });
-      }
-      async function two(){
-      await axios1({
+      
+    
+      axios1({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url:
           "https://graph.facebook.com/v12.0/" +
@@ -94,10 +93,7 @@ app.post("/webhook", (req, res) => {
         },
         headers: { "Content-Type": "application/json" },
       });
-      }
-      
-      one()
-      two()
+     
     }
     res.sendStatus(200);
   } else {
