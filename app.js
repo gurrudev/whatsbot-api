@@ -17,6 +17,7 @@ const request = require("request"),
   express = require("express"),
   body_parser = require("body-parser"),
   axios = require("axios").default,
+  axios1 = require("axios").default,
   app = express().use(body_parser.json()); // creates express http server
 
 // Sets server port and logs message on success
@@ -48,9 +49,10 @@ app.post("/webhook", (req, res) => {
       
       if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
         msg_body = "Hello, how may i help you..."
+      }if(msg_body == "Hello World" || msg_body == "hello world"){
+        var type = "hello_world"
       }else{
-        msg_body = "Sorry, I didn't get what you have said"
-        var text = "Use following Keywords"
+        msg_body = "Sorry, I didn't get what you have said"  
       }
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -62,12 +64,31 @@ app.post("/webhook", (req, res) => {
         data: {
           messaging_product: "whatsapp",
           to: from,
-          text: { body: msg_body + "\n"+text},
+          text: { body: msg_body },
         },
         headers: { "Content-Type": "application/json" },
       });
       
-      axios({})
+      axios1({
+        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+        url:
+          "https://graph.facebook.com/v12.0/" +
+          phone_number_id +
+          "/messages?access_token=" +
+          token,
+        data: {
+          messaging_product: "whatsapp",
+          to: from,
+          type: "template",
+          template:{
+            name: type,
+            language: {
+              code: "en_US"
+            }
+          }
+        },
+        headers: { "Content-Type": "application/json" },
+      });
     }
     res.sendStatus(200);
   } else {
