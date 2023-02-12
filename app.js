@@ -48,6 +48,9 @@ app.post("/webhook", (req, res) => {
       
       if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
         msg_body = "Hello, how may i help you..."
+      }else{
+        msg_body = "Sorry, I didn't get what you have said"
+        var text = "Use following Keywords"
       }
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
@@ -59,7 +62,7 @@ app.post("/webhook", (req, res) => {
         data: {
           messaging_product: "whatsapp",
           to: from,
-          text: { body: "Ack: " + msg_body },
+          text: { body: msg_body }, {body: text},
         },
         headers: { "Content-Type": "application/json" },
       });
