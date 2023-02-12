@@ -52,7 +52,7 @@ app.post("/webhook", (req, res) => {
       if (msg_body == "hi" || msg_body == "Hi" || msg_body == "hello" || msg_body == "Hello" || msg_body == "start" || msg_body == "Start"){
         msg = "Hello, how may i help you..."
       }if(msg_body == "Hello World" || msg_body == "hello world"){
-        var type = "hello_world"
+        type = "hello_world"
       }else{
         msg = "Sorry, I didn't get what you have said"  
       }
