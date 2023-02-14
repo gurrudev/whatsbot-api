@@ -97,6 +97,8 @@ app.post("/webhook", (req, res) => {
 //         },
 //         headers: { "Content-Type": "application/json" },
 //       });
+      
+      console.log(JSON.stringify(res.body, null, 2));
      
     }
     res.sendStatus(200);
