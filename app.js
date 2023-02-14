@@ -45,7 +45,8 @@ app.post("/webhook", (req, res) => {
       }else if (msg_body == "Balance" || msg_body == "balance"){
         msg_body = "Dear, {i} your account balance is {i}"
       }else if (msg_body == "Document" || msg_body == "document"){
-        msg_body = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+        let msg = "Please find attached document\n"
+        msg_body = msg + "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
       }else if (msg_body == "Portfolio" || msg_body == "portfolio" ){
         msg_body = "This is For portfolio\n\n{i}\n{i}\n{i}\n{i}"
       }else if (msg_body == "Orders" || msg_body == "orders"){
