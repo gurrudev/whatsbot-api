@@ -1,4 +1,4 @@
-# WhatsApp Platform Quick Start
+# whatsapp-bot
 
 Welcome to your first step toward building awesome WhatsApp apps!
 
