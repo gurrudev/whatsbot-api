@@ -39,13 +39,14 @@ app.post("/webhook", (req, res) => {
       let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
       let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
       
+      let data = msg_body
   
       if (msg_body.toLowerCase() == "👋"|| msg_body.toLowerCase() == "✋"|| msg_body.toLowerCase() == "hi" || msg_body.toLowerCase() == "hello" ||  msg_body.toLowerCase() == "start" ){
         msg_body = "*Hi there! I am your virtual asistant from Gainn Fintach* \n\nI can do following please type correct keyword.\n\n*Balance* - To know your account balance\n*Portfolio* - To know your holdings\n*Orders* - To know about your orders\n*Contact* - Contact with our customer care\n*Document* - To get your document\n*Help* - To get additional help"
       }else if (msg_body.toLowerCase() == "balance"){
         msg_body = "Dear, {i} your account balance is {i}"
       }else if (msg_body.toLowerCase() == "document"){
-        let data = {
+         data = {
             messaging_product: "whatsapp",
             to: from,
             type: "template",
