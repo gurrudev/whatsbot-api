@@ -45,6 +45,17 @@ app.post("/webhook", (req, res) => {
       }else if (msg_body.toLowerCase() == "balance"){
         msg_body = "Dear, {i} your account balance is {i}"
       }else if (msg_body.toLowerCase() == "document"){
+        let data = {
+            messaging_product: "whatsapp",
+            to: from,
+            type: "template",
+            template:{
+              name: "hello_world",
+              language: {
+                code: "en_US"
+              }
+            }
+         }
         let msg = "Please find attached document\n"
         msg_body = msg + "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
       }else if (msg_body == "Portfolio" || msg_body == "portfolio" ){
@@ -68,11 +79,7 @@ app.post("/webhook", (req, res) => {
           phone_number_id +
           "/messages?access_token=" +
           token,
-        data: {
-          messaging_product: "whatsapp",
-          to: from,
-          text: { body: msg_body },
-        },
+        data,
         headers: { "Content-Type": "application/json" },
       });
       
