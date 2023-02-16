@@ -42,9 +42,24 @@ app.post("/webhook", (req, res) => {
       let data = msg_body
   
       if (msg_body.toLowerCase() == "👋"|| msg_body.toLowerCase() == "✋"|| msg_body.toLowerCase() == "hi" || msg_body.toLowerCase() == "hello" ||  msg_body.toLowerCase() == "start" ){
-        msg_body = "*Hi there! I am your virtual asistant from Gainn Fintach* \n\nI can do following please type correct keyword.\n\n*Balance* - To know your account balance\n*Portfolio* - To know your holdings\n*Orders* - To know about your orders\n*Contact* - Contact with our customer care\n*Document* - To get your document\n*Help* - To get additional help"
+        let msg = "*Hi there! I am your virtual asistant from Gainn Fintach* \n\nI can do following please type correct keyword.\n\n*Balance* - To know your account balance\n*Portfolio* - To know your holdings\n*Orders* - To know about your orders\n*Contact* - Contact with our customer care\n*Document* - To get your document\n*Help* - To get additional help"
+         data = {
+          messaging_product: "whatsapp",
+          to: from,
+          text: { 
+            body: msg
+          }
+        }
       }else if (msg_body.toLowerCase() == "balance"){
-        msg_body = "Dear, {i} your account balance is {i}"
+        let msg = "Dear, {i} your account balance is {i}"
+        data = {
+          messaging_product: "whatsapp",
+          to: from,
+          text: { 
+            body: msg
+          }
+        }
+        
       }else if (msg_body.toLowerCase() == "document"){
          data = {
             messaging_product: "whatsapp",
@@ -57,16 +72,40 @@ app.post("/webhook", (req, res) => {
               }
             }
          }
-        let msg = "Please find attached document\n"
-        msg_body = msg + "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+        //let msg = "Please find attached document\n"
+        //msg_body = msg + "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
       }else if (msg_body == "Portfolio" || msg_body == "portfolio" ){
-        msg_body = "This is For portfolio\n\n{i}\n{i}\n{i}\n{i}"
+        let msg = "This is For portfolio\n\n{i}\n{i}\n{i}\n{i}"
+        data = {
+          messaging_product: "whatsapp",
+          to: from,
+          text: { 
+            body: msg
+          }
+        }
       }else if (msg_body == "Orders" || msg_body == "orders"){
-        msg_body = "This is For orders\n\n{i}\n{i}\n{i}\n{i}"
+        let msg = "This is For orders\n\n{i}\n{i}\n{i}\n{i}"
+        data = {
+          messaging_product: "whatsapp",
+          to: from,
+          text: { 
+            body: msg
+          }
+        }
       }else if (msg_body == "Contact" || msg_body == "contact"){
-        msg_body = "Contact with our customer care{i}"
+          data = {
+            messaging_product: "whatsapp",
+            to: from,
+            type: "template",
+            template:{
+              name: "contact_with_us",
+              language: {
+                code: "en_US"
+              }
+            }
+         }
       }else if (msg_body == "help" || msg_body == "Help"){
-        msg_body = "For more information visit our website: https://nwww.example.com"
+        //msg_body = "For more information visit our website: https://nwww.example.com"
       }else if (msg_body == "Thank You" || msg_body == "Thank you" || msg_body == "thank you" || msg_body == "thank You"){
         msg_body = "You are most welcome!, please let me know if you want any help"
       }else{
