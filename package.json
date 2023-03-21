@@ -1,7 +1,7 @@
 {
   "name": "whatsapp-cloudapi-quick-start",
   "version": "1.0.0",
-  "description": "An example webhook for WhatsApp Cloud API quick start tutorial.",
+  "description": "An example webhook for WhatsApp Cloud API.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
