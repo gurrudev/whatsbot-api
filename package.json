@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js"
   },
-  "author": "Ashutosh Pawar",
+  "author": "Ashutosh Pawar - https://github.com/gurrudev",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
