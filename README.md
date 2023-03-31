@@ -25,7 +25,6 @@ $ npm start
 
 ## Additional Resources
 
-Interested in learning more about the WhatsApp Platform?
 
 Check out these resources:
 
