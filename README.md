@@ -6,6 +6,23 @@ This project contains the code for a simple webhook you can use to get started u
 
 The code here mirrors what is in our [webhook set up guide](https://developers.facebook.com/docs/whatsapp/cloud-api/guides/set-up-webhooks), and may be used as the starting point for doing the ["Get Started With the WhatsApp Business Cloud API guide"](https://developers.facebook.com/docs/whatsapp/getting-started/signing-up/).
 
+
+📦Install
+
+```sh
+$ npm install 
+```
+        
+💻Usage
+
+```js
+const token = process.env.WHATSAPP_TOKEN;
+```
+🚀Start 
+```sh
+$ npm start
+```
+
 ## Additional Resources
 
 Interested in learning more about the WhatsApp Platform?
