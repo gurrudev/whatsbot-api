@@ -13,7 +13,6 @@ const request = require("request"),
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log("webhook is listening 🚀"));
 
-
 // Accepts POST requests at /webhook endpoint
 app.post("/webhook", (req, res) => {
   // Parse the request body from the POST
@@ -121,29 +120,6 @@ app.post("/webhook", (req, res) => {
       });
       
     
-//       axios1({
-//         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-//         url:
-//           "https://graph.facebook.com/v12.0/" +
-//           phone_number_id +
-//           "/messages?access_token=" +
-//           token,
-//         data: {
-//           messaging_product: "whatsapp",
-//           to: from,
-//           type: "template",
-//           template:{
-//             name: type,
-//             language: {
-//               code: "en_US"
-//             }
-//           }
-//         },
-//         headers: { "Content-Type": "application/json" },
-//       });
-      
-      //console.log(JSON.stringify(res.body, null, 2));
-     
     }
     res.sendStatus(200);
   } else {
