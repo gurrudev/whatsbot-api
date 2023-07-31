@@ -38,7 +38,7 @@ app.post("/webhook", (req, res) => {
       let data = msg_body
   
       if (msg_body.toLowerCase() == "👋"|| msg_body.toLowerCase() == "✋"|| msg_body.toLowerCase() == "hi" || msg_body.toLowerCase() == "hello" ||  msg_body.toLowerCase() == "start" ){
-        let msg = "*Hi there! I am your virtual asistant from Gainn Fintach* \n\nI can do following please type correct keyword.\n\n*Balance* - To know your account balance\n*Portfolio* - To know your holdings\n*Orders* - To know about your orders\n*Contact* - Contact with our customer care\n*Document* - To get your document\n*Help* - To get additional help"
+        let msg = "*Hi there! I am your virtual asistant* \n\nI can do following please type correct keyword.\n\n*Balance* - To know your account balance\n*Portfolio* - To know your holdings\n*Orders* - To know about your orders\n*Contact* - Contact with our customer care\n*Document* - To get your document\n*Help* - To get additional help"
          data = {
           messaging_product: "whatsapp",
           to: from,
